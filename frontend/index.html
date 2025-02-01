@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- This meta tag ensures that the website renders correctly across different device sizes, enhancing mobile responsiveness. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to the external CSS stylesheet. Uncomment if you wish to customize or add styling. -->
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Game Database Application</title>
+</head>
+<body>
+<!-- Database Connection Status -->
+<h1>Database Connection Status:
+    <span id="dbStatus"></span>
+    <img id="loadingGif" class="loading-gif" src="loading_100px.gif" alt="Loading...">
+</h1>
+
+<br><hr><br>
+
+
+<!-- Initialize Game Table -->
+<div id="initialize-game-table">
+<h2>Initialize Game Table</h2>
+<p>If you wish to reset the game table, press the reset button. If this is the first time you're running this page, you should initialize it.</p>
+<button id="resetGameTable">Initialize Game Table</button>
+<div id="resetResultMsg"></div>
+</div>
+
+<br><hr><br>
+
+<!-- Container for Game Table and Operations -->
+<div id="game-section">
+    <!-- Game Table -->
+    <div id="gameTableContainer">
+        <h2>All Games</h2>
+        <table id="gameTable" border="1">
+            <thead>
+            <tr>
+                <th>Game ID</th>
+                <th>Game Title</th>
+                <th>Crossplay</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Operations: Insert, Update, Delete -->
+    <div id="operationsContainer">
+        <!-- Insert and Update/Delete Side by Side -->
+        <div id="insert-update-delete">
+            <!-- Insert Section -->
+            <div id="insert-container">
+                <h2>Insert Game and Studio</h2>
+                <form id="insertGameForm">
+                    <!-- Game Inputs -->
+                    <fieldset>
+                        <legend>Game Details</legend>
+                        <label for="gameID">Game ID:</label>
+                        <input type="number" id="gameID" placeholder="Enter Game ID" required><br><br>
+
+                        <label for="gameTitle">Game Title:</label>
+                        <input type="text" id="gameTitle" placeholder="Enter Game Title" maxlength="100" required><br><br>
+
+                        <label for="crossplay">Crossplay:</label>
+                        <select id="crossplay" required>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                    </fieldset>
+
+                    <br>
+                    <!-- Studio Inputs -->
+                    <fieldset>
+                        <legend>Studio Details</legend>
+                        <label for="studioID">Studio ID:</label>
+                        <input type="number" id="studioID" placeholder="Enter Studio ID" required><br><br>
+
+                        <label for="studioName">Studio Name:</label>
+                        <input type="text" id="studioName" placeholder="Enter Studio Name" required><br><br>
+
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" placeholder="Enter Country" required><br><br>
+
+                        <label for="studioType">Studio Type:</label>
+                        <input type="text" id="studioType" placeholder="Enter Studio Type (e.g., AAA, Indie)" required><br><br>
+
+                        <label for="yearFound">Year Founded:</label>
+                        <input type="number" id="yearFound" placeholder="Enter Year Founded" required><br><br>
+                    </fieldset>
+                    <br>
+                    <!-- Submit Button -->
+                    <button type="submit">Insert Game and Studio</button>
+                </form>
+                <div id="insertResultMsg"></div>
+            </div>
+
+            <!-- Update and Delete Section -->
+            <div id="update-delete-container">
+                <!-- Update Section -->
+                <div id="update-container">
+                    <h2>Update Game</h2>
+                    <form id="updateGameForm">
+                        Game ID: <input type="number" id="updateGameID" placeholder="Enter Game ID" required><br><br>
+                        New Title: <input type="text" id="newGameTitle" placeholder="Enter New Game Title" maxlength="100"><br><br>
+                        <label for="newCrossplay">Crossplay:</label>
+                        <select id="newCrossplay" required>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                        <button type="submit">Update Game</button>
+                    </form>
+                    <div id="updateResultMsg"></div>
+                </div>
+
+                <!-- Delete Section -->
+                <div id="delete-container">
+                    <h2>Delete Game</h2>
+                    <form id="deleteGameForm">
+                        Game ID: <input type="number" id="deleteGameID" placeholder="Enter Game ID" required><br><br>
+                        <button type="submit">Delete Game</button>
+                    </form>
+                    <div id="deleteResultMsg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Count Games in Game Table -->
+<div id="count-container">
+    <button id="countGames">Game Count</button>
+    <div id="countResultMsg"></div>
+</div>
+<br><hr><br>
+
+<!-- Grouped Query Section: Games on Platforms -->
+<div id="platform-section">
+    <h2>Games on Platforms</h2>
+
+    <div id="platformQueriesContainer">
+        <!-- Show Games on Each Platform -->
+        <div id="gamesOnEachPlatformContainer">
+            <h3>Show Games on Each Platform</h3>
+            <form id="joinPlatformGameForm">
+                <label for="selectedPlatform">Select a Platform Type:</label>
+                <select id="selectedPlatform" name="platform">
+                    <option value="Console">Console</option>
+                    <option value="PC">PC</option>
+                    <option value="Home Console">Home Console</option>
+                    <option value="all">All types</option>
+                </select>
+                <button type="submit" id="join-game-platform">Show Games</button>
+            </form>
+            <table id="platformGameTable" border="1">
+                <thead>
+                <tr id="game-platform-attributes"></tr>
+                </thead>
+                <tbody id="game-platform-body"></tbody>
+            </table>
+            <div id="joinResultMsg"></div>
+        </div>
+
+        <!-- Show Games on All Platforms -->
+        <div id="gamesOnAllPlatformsContainer">
+            <h3>Show Games Released on All Platforms (Console, PC, Home Console, etc.)</h3>
+            <button id="divideButton">Search for Games</button>
+            <table id="divideTable" border="1">
+                <thead>
+                <tr id="game-all-platforms-attributes"></tr>
+                </thead>
+                <tbody id="game-all-platform-body"></tbody>
+            </table>
+            <div id="divideResultMsg"></div>
+        </div>
+    </div>
+</div>
+
+<br><hr><br>
+
+<!-- Studio and Related Queries Section -->
+<div id="studio-section">
+    <h2>Studios and Related Queries</h2>
+
+    <div id="studio-queries-container">
+        <!-- Selection for Studio -->
+        <div id="studio-creates-container">
+            <div id="selection-container">
+                <h3>Search for a Studio</h3>
+                <form id="selectAttributesStudioForm">
+                    <div class="checkbox-container">
+                        <label><input type="checkbox" class='studioCheckbox' name="studioAttributes" value="studioID">Studio ID</label>
+                        <label><input type="checkbox" class='studioCheckbox' name="studioAttributes" value="studioName">Studio Name</label>
+                        <label><input type="checkbox" class='studioCheckbox' name="studioAttributes" value="studioType">Studio Type</label>
+                        <label><input type="checkbox" class='studioCheckbox' name="studioAttributes" value="country">Country</label>
+                        <label><input type="checkbox" class='studioCheckbox' name="studioAttributes" value="yearFound">Year Founded</label>
+                    </div>
+                    <div id="select-buttons">
+                        <button type="button" id="filters-for-selection">Continue</button>
+                        <button type="button" id="reset-selection">Clear Search</button>
+                        <button type="button" id="show-studios">Show All Studios</button>
+                    </div>
+                </form>
+
+                <table id="selectStudioTable" border="1">
+                    <thead>
+                    <tr id="selection-attributes"></tr>
+                    </thead>
+                    <tbody id="selection-body"></tbody>
+                </table>
+                <div id="selectionFilterResultMsg"></div>
+                <div id="displayAllResultMsg"></div>
+
+            </div>
+        </div>
+
+        <!-- Queries: Group By, Best Rated Games -->
+        <div id="queries-container">
+            <!-- Games Per Studio -->
+            <div id="groupby-container">
+                <h3>Games Per Studio</h3>
+                <button id="groupByButton">Show Games Per Studio</button>
+                <table id="groupByTable" border="1">
+                    <thead>
+                    <tr id="studio-groupby-attributes"></tr>
+                    </thead>
+                    <tbody id="studio-groupby-body"></tbody>
+                </table>
+                <div id="groupByResultMsg"></div>
+            </div>
+
+            <!-- Best Rated Games -->
+            <div id="nestedaggr-container">
+                <h3>Studios with Best Rated Games</h3>
+                <button id="show-best-studios">Show Studios with Best Rated Games</button>
+                <table id="studioRatingTable" border="1">
+                    <thead>
+                    <tr id="studio-rating-attributes"></tr>
+                    </thead>
+                    <tbody id="studio-rating-body"></tbody>
+                </table>
+                <div id='studioRatingResultMsg'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><hr><br>
+
+<!-- Projection and Award Queries Section -->
+<div id="projection-award-section">
+    <h2>Awards and Related Queries</h2>
+    <div id="projection-awards-container">
+        <!-- Projection for Platform -->
+        <div id="projection-container">
+            <h3>Award Information</h3>
+            <form id="projFilterGameAwardsForm">
+                <div class="checkbox-container">
+                    <label><input type="checkbox" name="gameAwardsAttributes" value="gameTitle">Game Title</label>
+                    <label><input type="checkbox" name="gameAwardsAttributes" value="awdTitle">Award Title</label>
+                    <label><input type="checkbox" name="gameAwardsAttributes" value="awdYear">Award Year</label>
+                    <label><input type="checkbox" name="gameAwardsAttributes" value="awdDescription">Award Description</label>
+                </div>
+                <button type="button" id="projectionButton">Display Awards</button>
+            </form>
+            <table id="projectionTable" border="1">
+                <thead>
+                <tr id="game-awards-attributes"></tr>
+                </thead>
+                <tbody id="game-awards-body"></tbody>
+            </table>
+            <div id="projFilterResultMsg"></div>
+        </div>
+
+        <!-- Games with More Than 1 Award -->
+        <div id="having-container">
+            <h3>Games' Award Track Record</h3>
+            <button id="havingButton">Show Award-Winning Games</button>
+            <table id="havingTable" border="1">
+                <thead>
+                <tr id="awards-having-attributes"></tr>
+                </thead>
+                <tbody id="awards-having-body"></tbody>
+            </table>
+            <div id="havingResultMsg"></div>
+        </div>
+    </div>
+</div>
+
+<br><hr><br>
+
+<!-- External JavaScript file that contains the functionality/logic for the operations above. -->
+<script src="scripts.js"></script>
+</body>
+</html>

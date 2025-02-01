@@ -1,0 +1,253 @@
+/* GLOBAL STYLES */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    padding: 100px 150px;
+    margin: 0;
+    line-height: 1.6;
+    background-color: #fffef5f9;
+    color: #313131;
+}
+
+hr {
+    border-top: 2px solid rgb(44, 51, 62);
+    margin: auto;
+}
+
+/* LAYOUT AND CONTAINERS */
+#game-section,
+#platformQueriesContainer,
+#studio-queries-container,
+#projection-awards-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+#gameTableContainer,
+#gamesOnEachPlatformContainer,
+#gamesOnAllPlatformsContainer,
+#queries-container,
+#projection-container,
+#having-container {
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#insert-update-delete {
+    display: flex;
+    gap: 20px;
+}
+
+/* Shared styles for Insert, Update, and Delete */
+#insert-update-delete > div {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff; /* Unified white background */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    overflow: hidden;
+}
+
+#update-delete-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
+#groupby-container,
+#nestedaggr-container {
+    margin-top: 20px;
+}
+
+/* Studio and Creates Tables Side by Side */
+#studio-creates-container {
+    display: flex;
+    gap: 20px;
+}
+
+#dynamicSelectionForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 30px;
+}
+
+.attributeInputRow,
+.logicRow {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-content: center;
+    gap: 15px;
+}
+
+.logicRow {
+    padding-top: 10px;
+    justify-content: center;
+}
+
+.orSection,
+.andSection {
+    width: 12%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.andText,
+.orText {
+    margin-top: -3px;
+}
+
+.attributeInputRow {
+    justify-content: space-between;
+}
+
+.attributeInputLabel {
+    width: 18%;
+    align-content: center;
+}
+
+.attributeInputField {
+    width: 70%;
+    align-content: center;
+}
+
+.attributeInputSpaceHolder,
+.attributeInputDropdown {
+    width: 12%;
+}
+
+#select-studio {
+    width: 200px;
+    align-self: center;
+}
+
+
+/* Shared styles for tables with white background */
+#selection-container,
+#createsTableContainer {
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* FORM ELEMENTS */
+input, textarea, select {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #aaa;
+}
+
+.checkbox-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.checkbox-container label {
+    font-size: 16px;
+}
+
+/* specific form style for selection */
+#select-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+/* TABLE STYLES */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+/* BUTTON STYLES */
+button {
+    display: block;
+    margin-top: 10px;
+    background-color: rgb(32, 107, 227);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+}
+
+button:hover {
+    background-color: rgb(22, 87, 207);
+}
+
+button:active {
+    background-color: rgb(12, 67, 187);
+}
+
+/* HEADING STYLES */
+h3 {
+    margin-bottom: 10px;
+}
+
+/* OTHER STYLES */
+.loading-gif {
+    height: 1em;
+    vertical-align: middle;
+}
+
+/* Add consistent margin under the specified buttons */
+#filters-for-selection,
+#reset-selection,
+#show-studios,
+#projectionButton,
+#havingButton,
+#show-best-studios,
+#join-game-platform,
+#groupByButton,
+#divideButton {
+    margin-bottom: 20px;
+}
