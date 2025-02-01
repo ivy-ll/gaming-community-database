@@ -1,5 +1,5 @@
 # **Community Gaming Database**
 
-The **Community Gaming Database** is a full-stack project built with **JavaScript, SQL, Node.js, and Express.js**, designed to simulate a gaming community's data management system. It features a structured SQL database with **dummy data**, allowing users to perform various queries while following best practices in **database design and normalization**.
+The **Community Gaming Database** is a full-stack project built with **JavaScript, SQL, Node.js, and Express.js**, designed to act as a platform for gamers to search for and discover information surrounding various video game comnnumities. It features a structured SQL database with **dummy data**, allowing users to perform various queries including finding game-platform releases, information on awards, release dates, and more. 
 
-Originally developed as part of a **databases course at UBC**, this project showcases **SQL fundamentals**, efficient query execution, and proper relational database conventions.
+This project was made alongside 2 other students as part of UBC's Introduction to Relational Databases Course (CPSC 304), showcasing **SQL fundamentals** and implementing proper **database design and normalization** conventions.
